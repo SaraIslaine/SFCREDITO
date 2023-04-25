@@ -1,0 +1,80 @@
+﻿@model List<SFCredito.Web.Models.UsuarioModel>
+<br />
+    <div class="container-md">
+
+    <input id="Login" class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Create","Usuario")'" style="" width="200" height="34" value="Novo" />
+</div>
+<br />
+<table id="myTable" class="table">
+    <thead>
+        <tr>
+          
+            <th>Nome Completo</th>
+            <th>Data Cadastro</th>
+            <th>Data Atualizacao</th>
+            <th>Situacao</th>
+            <th>Login</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            
+            <tr>
+                <td>@item.NomeCompleto</td>
+                <td>@item.DataCadastro.ToShortDateString()</td>
+
+                @if (@item.DataAtualizacao == null)
+                {
+                <td> @item.DataAtualizacao</td>
+
+                }
+                else
+                {
+                <td>@item.DataAtualizacao.Value.ToShortDateString()</td>
+                }
+                @if (@item.Ativo)
+                {
+                    <td>Ativo</td> 
+               
+                }else
+                {
+                    <td>Inativo</td>
+
+                }
+
+                <td>@item.Login</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                    <a asp-action="AlterarSenha" asp-route-id="@item.Id"><i class="bi bi-lock-fill"></i></a>
+                    <a asp-action="Modal" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i></a>
+            </td>
+                
+            </tr>
+             
+        }
+ 
+       
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json'
+
+                },
+                "sPaginationType": "numbers"
+            });
+        });
+
+    </script>
+}

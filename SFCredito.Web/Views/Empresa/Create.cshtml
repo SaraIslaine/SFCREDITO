@@ -1,0 +1,102 @@
+﻿@model SFCredito.Web.Models.EmpresaModel
+
+<div id="myform4">
+    <form>
+    
+        <div>
+            <label class="control-label">Cep</label>
+            <input asp-for="Cep" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Cep" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Número</label>
+            <input asp-for="Numero" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Numero" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Endereço</label>
+            <input asp-for="Endereco" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Endereco" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Bairro</label>
+            <input asp-for="Bairro" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Bairro" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Nome Fantasia</label>
+            <input asp-for="NomeFantasia" type="text" class="form-control small col-4" />
+            <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Email</label>
+            <input asp-for="Email" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Celular</label>
+            <input asp-for="Celular" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Celular" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Cnpj</label>
+            <input asp-for="Cnpj" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Cnpj" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">Razao Social</label>
+            <input asp-for="RazacaoSocial" type="text" class="form-control small col-4" />
+            <span asp-validation-for="RazacaoSocial" class="text-danger"></span>
+        </div>
+        </form>
+            <input type="button" id="btnEmpresa" value="Salvar" class="btn btn-primary" />
+            <input type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index","Empresa")'" width="30" height="32" value="Voltar" />
+        </div>
+        
+
+@section Scripts
+    {
+    <script type="text/javascript">
+
+
+        /// Finalizar vistoria
+        $(document).delegate("#btnEmpresa", "click", function (event) {
+            event.preventDefault();
+
+
+            var options = {};
+            options.type = "POST";
+            options.url = "/Empresa/Create";
+            options.dataType = "JSON";
+            options.cache = false;
+            options.async = true;
+            contentType = "application/json; charset=utf-8",
+                options.data = {
+                    "Cep": $("#Cep").val(),
+                    "Numero": $("#Numero").val(),
+                    "Endereco": $("#Endereco").val(),
+                    "Bairro": $("#Bairro").val(),
+                    "NomeFantasia": $("#NomeFantasia").val(),
+                    "Email": $("#Email").val(),
+                    "Celular": $("#Celular").val(),
+                    "Cnpj": $("#Cnpj").val(),
+                    "RazacaoSocial": $("#RazacaoSocial").val()
+                };
+
+            options.beforeSend = function (xhr) {
+                //xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val());
+            };
+
+            options.success = function (data) {
+                //do your stuff...
+
+            };
+            options.error = function (res) {
+                $('#myform4').html(res.responseText); //change here...
+            };
+            $.ajax(options);
+
+
+        });
+    </script>
+}

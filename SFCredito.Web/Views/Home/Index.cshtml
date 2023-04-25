@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple required />
+    <input type="text" autocomplete="off" placeholder="Enter File Description" name="description" required />
+    <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="UploadToFileSystem">Upload to File System</button>
+@*    <button class="btn btn-success" type="submit" asp-controller="File" asp-action="UploadToDatabase">Upload to Database</button>*@
+</form>

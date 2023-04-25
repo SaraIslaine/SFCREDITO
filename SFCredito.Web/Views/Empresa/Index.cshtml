@@ -1,0 +1,76 @@
+﻿@model List<SFCredito.Web.Models.EmpresaModel>
+
+<table id="myTable" class="table">
+    <thead>
+        <tr>
+          
+            <th>Cep</th>
+            <th>Numero</th>
+            <th>Endereco</th>
+            <th>Bairro</th>
+            <th>Nome Fantasia</th>
+            <th>Email</th>
+            <th>Celular</th>
+            <th>Cnpj</th>
+            <th>Razao Social</th>
+           
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Cep</td>
+                <td>@item.Numero</td>
+                <td>@item.Endereco</td>
+                <td>@item.Bairro</td>
+                <td>@item.NomeFantasia</td>
+                <td>@item.Email</td>
+                <td>@item.Celular</td>
+                <td>@item.Cnpj</td>
+                <td>@item.RazacaoSocial</td>
+
+                <td>
+               
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                   @* <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                    <a asp-action="AlterarSenha" asp-route-id="@item.Id"><i class="bi bi-lock-fill"></i></a>
+                    <a asp-action="Modal" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i></a>*@
+                </td>
+
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>
+<br />
+<div class="container-md">
+
+    <input id="Login" class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Create","Empresa")'" style="" width="200" height="34" value="Adicionar" />
+</div>
+<br />
+
+ @section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json'
+
+                },
+                "sPaginationType": "numbers"
+            });
+        });
+
+    </script>
+        
+ }
+   
+       
+         

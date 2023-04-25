@@ -1,0 +1,70 @@
+﻿@model SFCredito.Web.Models.UsuarioModel
+
+
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>*@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id=" btnChk">Informações do cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="Informações do cliente">
+                <dl class="row">
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.NomeCompleto)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.NomeCompleto)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.Login)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.Login)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.DataCadastro)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.DataCadastro)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.DataAtualizacao)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.DataAtualizacao)
+                    </dd>
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.Senha)
+                    </dd>
+                    <dl />
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index","Usuario")'" width="30" height="32" value="Voltar" /> 
+            @*<button type="button" class="btn btn-primary">Save change</button> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+    @section Scripts
+    {
+    <script type="text/javascript">
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+            $('#exampleModal').modal('show')
+        });
+
+
+    </script>
+    }

@@ -1,0 +1,39 @@
+﻿@model SFCredito.Web.Models.UsuarioModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<br/>
+<h4>Alterar Usuário</h4>
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="col-md-12">
+                <form asp-action="Edit">
+
+                    <input asp-for="Ativo" type="hidden" />
+                    <input asp-for="Senha" type="hidden" />
+                    <input asp-for="DataCadastro" type="hidden" />
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="NomeCompleto" class="control-label"></label>
+                        <input asp-for="NomeCompleto" class="form-control" />
+                        <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Login" class="control-label"></label>
+                        <input asp-for="Login" class="form-control" />
+                        <span asp-validation-for="Login" class="text-danger"></span>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <input type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index","Usuario")'" width="30" height="32" value="Voltar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

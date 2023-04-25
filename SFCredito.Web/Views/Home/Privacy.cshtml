@@ -1,0 +1,58 @@
+﻿@model SFCredito.Web.Models.UsuarioModel
+<div id="myform">
+    <form>
+        <div>
+            <label class="control-label">CodCard</label>
+            <input asp-for="NomeCompleto" type="text" class="form-control small col-4" />
+            <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+        </div>
+        <div>
+            <label class="control-label">IdOrder</label>
+            <input asp-for="Login" type="text" class="form-control small col-4" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+        <div>
+            <input type="button" id="btnChk" value="click" />
+        </div>
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+
+
+        /// Finalizar vistoria
+        $(document).delegate("#btnChk", "click", function (event) {
+            event.preventDefault();
+
+          
+                var options = {};
+                options.type = "POST";
+                options.url = "/Home/CheckOut";
+                options.dataType = "JSON";
+                options.cache = false;
+                options.async = true;
+                contentType = "application/json; charset=utf-8",
+                    options.data = {
+                        "NomeCompleto": $("#NomeCompleto").val(),
+                        "Login": $("#Login").val()
+                    };
+
+                options.beforeSend = function (xhr) {
+                    //xhr.setRequestHeader("XSRF-TOKEN", $('input:hidden[name="__RequestVerificationToken"]').val());
+                };
+
+                options.success = function (data) {
+                    //do your stuff...
+
+                };
+                options.error = function (res) {
+                    $('#myform').html(res.responseText); //change here...
+                };
+                $.ajax(options);
+
+        
+        });
+    </script>
+}

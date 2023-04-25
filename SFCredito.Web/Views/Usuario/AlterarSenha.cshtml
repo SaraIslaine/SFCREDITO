@@ -1,0 +1,51 @@
+﻿@model SFCredito.Web.Models.UsuarioNovaSenhaModel
+
+@{
+    ViewData["Title"] = "AlterarSenha";
+}
+<br/>
+<br />
+
+<h4>Alterar Senha</h4>
+<div class="container">
+<div class="row">
+    <div class="card">
+        <div class="card-body">
+           
+            <div class="col-md-12">
+                <form asp-action="AlterarSenha" onsubmit="formSubmit(event, 'partial')">
+                    @Html.HiddenFor(d=>d.Usuario.DataAtualizacao)
+                    @Html.HiddenFor(d=>d.Usuario.DataCadastro)
+                    @Html.HiddenFor(d=>d.Usuario.NomeCompleto)
+                    @Html.HiddenFor(d=>d.Usuario.Ativo)
+                    @Html.HiddenFor(d=>d.Usuario.Login)
+                    @Html.HiddenFor(d=>d.Usuario.Id)
+                    @Html.HiddenFor(d=>d.Usuario.Senha)
+                 
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Senha" class="control-label"></label>
+                        <input asp-for="Senha" class="form-control" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NovaSenha" class="control-label"></label>
+                        <input asp-for="NovaSenha" class="form-control" />
+                        <span asp-validation-for="NovaSenha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmaSenha" class="control-label"></label>
+                        <input asp-for="ConfirmaSenha" class="form-control" />
+                        <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <input type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index","Usuario")'" width="30" height="32" value="Voltar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
